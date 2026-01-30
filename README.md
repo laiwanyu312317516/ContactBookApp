@@ -2,6 +2,8 @@
 
 這是一個使用 React Native (Expo) 和 SQLite 建立的聯絡簿應用程式。
 
+**GitHub Repository**: [https://github.com/laiwanyu312317516/ContactBookApp](https://github.com/laiwanyu312317516/ContactBookApp)
+
 ## 功能
 
 - 新增聯絡人 (姓名, 電話)
@@ -23,48 +25,17 @@
     ```
     然後按下 `a` 在 Android 模擬器執行，或使用 Expo Go App 掃描 QR Code 在實機執行。
 
-## 產生 APK (Android 安裝檔)
+## 產生 APK (GitHub Actions)
 
-要產生 APK，您需要安裝 `eas-cli` 並登入 Expo 帳號。
+本專案已設定 GitHub Actions 自動建置 APK。每當您推送程式碼到 GitHub 時，系統會自動開始建置。
 
-1.  安裝 EAS CLI：
-    ```bash
-    npm install -g eas-cli
-    ```
+**如何下載 APK**:
 
-2.  登入 Expo 帳號 (若無帳號請先去 expo.dev 註冊)：
-    ```bash
-    eas login
-    ```
+1.  開啟 GitHub Repository 頁面：[https://github.com/laiwanyu312317516/ContactBookApp](https://github.com/laiwanyu312317516/ContactBookApp)
+2.  點擊上方的 **Actions** 標籤。
+3.  點擊最新的 **Build Android APK** 工作流程執行紀錄。
+4.  在頁面底部的 **Artifacts** 區域，點擊 `app-debug` 即可下載 APK 壓縮檔。
+5.  解壓縮後即可取得 `app-debug.apk` 並安裝到手機。
 
-3.  設定專案 (首次執行時)：
-    ```bash
-    eas build:configure
-    ```
+注意：此 APK 為 Debug 版本，安裝時可能會跳出安全警告，這是正常的。
 
-4.  建立 APK (用於測試安裝)：
-    修改 `eas.json`，新增 `preview` 設定：
-    ```json
-    {
-      "build": {
-        "preview": {
-          "android": {
-            "buildType": "apk"
-          }
-        },
-        "production": {}
-      }
-    }
-    ```
-    
-    然後執行：
-    ```bash
-    eas build -p android --profile preview
-    ```
-    
-    等待建置完成後，會產生下載連結。
-
-5.  建立 AAB (用於上架 Play Store)：
-    ```bash
-    eas build -p android
-    ```
